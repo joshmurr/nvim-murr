@@ -32,7 +32,7 @@ opt.softtabstop = indent
 opt.tabstop = indent
 
 -- search
-opt.hlsearch = false
+opt.hlsearch = true
 opt.ignorecase = true
 opt.smartcase = true
 opt.wildignore = opt.wildignore + { '*/node_modules/*', '*/.git/*', '*/vendor/*' }
@@ -52,8 +52,8 @@ opt.listchars = {
   nbsp = '×',
 }
 opt.mouse = 'a'
-opt.number = true
-opt.rnu = true
+opt.number = false
+opt.rnu = false
 opt.scrolloff = 18
 opt.showmode = false
 opt.sidescrolloff = 3 -- Lines to scroll horizontally
@@ -66,6 +66,7 @@ opt.wrap = false
 opt.backup = false
 opt.swapfile = false
 opt.writebackup = false
+opt.undofile = true
 
 -- autocomplete
 opt.completeopt = { 'menu', 'menuone', 'noselect' }

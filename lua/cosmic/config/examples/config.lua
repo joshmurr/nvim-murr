@@ -66,7 +66,7 @@ local config = {
   telescope = {},
   -- Theming, don't forget to run :CosmicReloadSync when changing themes
   -- Options: 'catppuccin', 'dracula', 'enfocado', 'github', 'gruvbox', 'kanagawa', 'nightfox', 'nord', 'onedark', 'rose-pine',
-  theme = 'tokyonight', -- don't define or set to nil, if you want to enable your own theme in cosmic/config/plugins.lua
+  theme = 'monokai', -- don't define or set to nil, if you want to enable your own theme in cosmic/config/plugins.lua
   -- See https://github.com/folke/todo-comments.nvim#%EF%B8%8F-configuration
   todo_comments = {},
   -- See :h nvim-treesitter-quickstart

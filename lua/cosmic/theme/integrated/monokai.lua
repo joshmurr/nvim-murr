@@ -1,4 +1,4 @@
-local palette = require('monokai').classic;
+local palette = require('monokai').classic
 
 local colors = {
   white = palette.white,
@@ -22,4 +22,3 @@ local colors = {
 }
 
 return colors
-

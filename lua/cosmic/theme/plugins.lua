@@ -170,7 +170,11 @@ function M.init(use, config)
     'tanvirtin/monokai.nvim',
     as = 'monokai',
     config = function()
-      require('monokai').setup()
+      require('monokai').setup({
+        palette = {
+          base2 = '#101010',
+        },
+      })
     end,
     disable = config.theme ~= 'monokai',
     commit = 'bff619d7a911cd8d8dcb5168db9ee6dfcc344934',

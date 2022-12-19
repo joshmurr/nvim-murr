@@ -28,7 +28,7 @@ return packer.startup(function()
   })
 
   -- theme stuff
-  use({ -- statusline
+  --[[ use({ -- statusline
     'NTBBloodbath/galaxyline.nvim',
     branch = 'main',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
@@ -37,7 +37,7 @@ return packer.startup(function()
     end,
     after = user_config.theme,
     disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'galaxyline'),
-  })
+  }) ]]
 
   -- file explorer
   use({
@@ -151,7 +151,7 @@ return packer.startup(function()
   })
 
   -- floating terminal
-  use({
+  --[[ use({
     'voldikss/vim-floaterm',
     opt = true,
     event = 'BufWinEnter',
@@ -159,7 +159,7 @@ return packer.startup(function()
       require('cosmic.plugins.terminal')
     end,
     disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'terminal'),
-  })
+  }) ]]
 
   -- file navigation
   use({
@@ -181,13 +181,13 @@ return packer.startup(function()
   })
 
   -- session/project management
-  use({
+  --[[ use({
     'glepnir/dashboard-nvim',
     config = function()
       require('cosmic.plugins.dashboard')
     end,
     disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'dashboard'),
-  })
+  }) ]]
 
   use({
     'rmagatti/auto-session',
@@ -241,6 +241,25 @@ return packer.startup(function()
       require('colorizer').setup()
     end,
     disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'colorizer'),
+  })
+
+  -- Lua
+  use({
+    'folke/which-key.nvim',
+    config = function()
+      require('which-key').setup({
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      })
+    end,
+  })
+
+  use({
+    'folke/trouble.nvim',
+    config = function()
+      require('trouble').setup()
+    end,
   })
 
   if user_config.add_plugins and not vim.tbl_isempty(user_config.add_plugins) then

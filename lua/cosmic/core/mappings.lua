@@ -1,5 +1,6 @@
 local map = require('cosmic.utils').map
 local user_plugins = require('cosmic.core.user')
+local unset = vim.api.nvim_del_keymap
 
 -- Mappings for plugins that need to be lazy loaded
 if not vim.tbl_contains(user_plugins.disable_builtin_plugins, 'nvim-tree') then
@@ -33,3 +34,20 @@ map('n', '<C-Up>', ':resize -2<CR>')
 map('n', '<C-Down>', ':resize +2<CR>')
 map('n', '<C-Left>', ':vertical resize -2<CR>')
 map('n', '<C-Right>', ':vertical resize +2<CR>')
+
+-- Mine --
+unset('n', 'Y')
+map('n', '<C-l>', ':nohl<CR><C-l>')
+map('n', ':w\\', '<nop>')
+map('n', '<F1>', '<nop>')
+--[[ map('n', '<C-n>', ':set invnumber<CR>') -- Toggle line numbers ]]
+map('n', '<C-p>', ':set wrap!<CR>') -- Toggle line wrap
+map('n', ':qt', ':tabclose') -- Close tab
+
+-- Trouble
+map('n', '<leader>xx', '<cmd>TroubleToggle document_diagnostics<cr>')
+map('n', '<leader>xa', '<cmd>TroubleToggle<cr>')
+map('n', '<leader>xw', '<cmd>TroubleToggle workspace_diagnostics<cr>')
+map('n', '<leader>xq', '<cmd>TroubleToggle quickfix<cr>')
+map('n', '<leader>xl', '<cmd>TroubleToggle loclist<cr>')
+map('n', 'gR', '<cmd>TroubleToggle lsp_references<cr>')

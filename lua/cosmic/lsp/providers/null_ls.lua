@@ -14,6 +14,7 @@ if config_opts.default_cosmic_sources then
     null_ls.builtins.diagnostics.eslint_d,
     null_ls.builtins.formatting.eslint_d,
     null_ls.builtins.diagnostics.markdownlint,
+    null_ls.builtins.formatting.shfmt,
     null_ls.builtins.formatting.prettierd.with({
       env = {
         PRETTIERD_LOCAL_PRETTIER_ONLY = 1,
