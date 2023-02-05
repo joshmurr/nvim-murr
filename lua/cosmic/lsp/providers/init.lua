@@ -1,77 +1,99 @@
 local u = require('cosmic.utils')
 local default_config = require('cosmic.lsp.providers.defaults')
 local config = require('cosmic.core.user')
-local lsp_installer = require('nvim-lsp-installer')
 
-lsp_installer.settings({
-  ui = {
-    keymaps = {
-      -- Keymap to expand a server in the UI
-      toggle_server_expand = 'i',
-      -- Keymap to install a server
-      install_server = '<CR>',
-      -- Keymap to reinstall/update a server
-      update_server = 'u',
-      -- Keymap to uninstall a server
-      uninstall_server = 'x',
+local nvim_lsp = require('lspconfig')
+
+nvim_lsp.tsserver.setup({
+  capabilities = default_config.capabilities,
+  on_attach = function(client, bufnr)
+    default_config.on_attach(client, bufnr)
+
+    local ts_utils = require('nvim-lsp-ts-utils')
+
+    -- defaults
+    ts_utils.setup(u.merge({
+      debug = false,
+      disable_commands = false,
+      enable_import_on_completion = true,
+
+      -- import all
+      import_all_timeout = 5000, -- ms
+      import_all_priorities = {
+        buffers = 4, -- loaded buffer names
+        buffer_content = 3, -- loaded buffer content
+        local_files = 2, -- git files or files with relative path markers
+        same_file = 1, -- add to existing import statement
+      },
+      import_all_scan_buffers = 100,
+      import_all_select_source = false,
+
+      -- inlay hints
+      auto_inlay_hints = true,
+      inlay_hints_highlight = 'Comment',
+
+      -- update imports on file move
+      update_imports_on_move = true,
+      require_confirmation_on_move = false,
+      watch_dir = nil,
+
+      -- filter diagnostics
+      filter_out_diagnostics_by_severity = {},
+      filter_out_diagnostics_by_code = {},
+    }, config.lsp.ts_utils or {}))
+
+    -- required to fix code action ranges and filter diagnostics
+    ts_utils.setup_client(client)
+  end,
+})
+
+nvim_lsp.sumneko_lua.setup({
+  on_attach = default_config.on_attach,
+  capabilities = default_config.capabilities,
+  settings = {
+    Lua = {
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = { 'vim' },
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = {
+          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+          [vim.fn.stdpath('config') .. '/lua'] = true,
+        },
+        maxPreload = 10000,
+      },
     },
   },
 })
 
--- initial default servers
--- by default tsserver/ts_utils and null_ls are enabled
-local requested_servers = {}
+nvim_lsp.clojure_lsp.setup({
+  on_attach = default_config.on_attach,
+  capabilities = default_config.capabilities,
+})
 
--- get disabled servers from config
-local disabled_servers = {}
-for config_server, config_opt in pairs(config.lsp.servers) do
-  if config_opt == false then
-    table.insert(disabled_servers, config_server)
-  elseif not vim.tbl_contains(requested_servers, config_server) then
-    -- add additonally defined servers to be installed
-    table.insert(requested_servers, config_server)
-  end
-end
+nvim_lsp.haxe_language_server.setup({
+  on_attach = default_config.on_attach,
+  capabilities = default_config.capabilities,
+})
 
--- go through requested_servers and ensure installation
-local lsp_installer_servers = require('nvim-lsp-installer.servers')
-for _, requested_server in pairs(requested_servers) do
-  local ok, server = lsp_installer_servers.get_server(requested_server)
-  if ok then
-    if not server:is_installed() then
-      server:install()
-    end
-  end
-end
-
-lsp_installer.on_server_ready(function(server)
-  local opts = default_config
-
-  -- disable server if config disabled server list says so
-  opts.autostart = true
-  if vim.tbl_contains(disabled_servers, server.name) then
-    opts.autostart = false
-  end
-
-  -- set up default cosmic options
-  if server.name == 'tsserver' then
-    opts = u.merge(opts, require('cosmic.lsp.providers.tsserver'))
-  elseif server.name == 'jsonls' then
-    opts = u.merge(opts, require('cosmic.lsp.providers.jsonls'))
-  elseif server.name == 'pyright' then
-    opts = u.merge(opts, require('cosmic.lsp.providers.pyright'))
-  elseif server.name == 'sumneko_lua' then
-    opts = u.merge(opts, require('cosmic.lsp.providers.sumneko_lua'))
-  end
-
-  -- override options if user definds them
-  if type(config.lsp.servers[server.name]) == 'table' then
-    if config.lsp.servers[server.name].opts ~= nil then
-      opts = u.merge(opts, config.lsp.servers[server.name].opts)
-    end
-  end
-
-  -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
-  server:setup(opts)
-  vim.cmd([[ do User LspAttachBuffers ]])
-end)
+nvim_lsp.jsonls.setup({
+  on_attach = default_config.on_attach,
+  capabilities = default_config.capabilities,
+  settings = {
+    json = {
+      schemas = require('schemastore').json.schemas(),
+    },
+  },
+  setup = {
+    commands = {
+      Format = {
+        function()
+          vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line('$'), 0 })
+        end,
+      },
+    },
+  },
+})

@@ -61,6 +61,7 @@ opt.signcolumn = 'yes'
 opt.splitbelow = true -- Open new split below
 opt.splitright = true -- Open new split to the right
 opt.wrap = false
+opt.showtabline = 0
 
 -- backups
 opt.backup = false

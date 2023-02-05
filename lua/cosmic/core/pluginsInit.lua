@@ -27,18 +27,6 @@ return packer.startup(function()
     after = user_config.theme,
   })
 
-  -- theme stuff
-  --[[ use({ -- statusline
-    'NTBBloodbath/galaxyline.nvim',
-    branch = 'main',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-    config = function()
-      require('cosmic.plugins.galaxyline')
-    end,
-    after = user_config.theme,
-    disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'galaxyline'),
-  }) ]]
-
   -- file explorer
   use({
     'kyazdani42/nvim-tree.lua',
@@ -69,13 +57,21 @@ return packer.startup(function()
   })
 
   use({
+    'williamboman/mason.nvim',
+    config = function()
+      require('cosmic.lsp.providers.mason')
+    end,
+  })
+  use({ 'williamboman/mason-lspconfig.nvim' })
+
+  use({
     'neovim/nvim-lspconfig',
     config = function()
       require('cosmic.lsp')
     end,
     requires = {
       { 'b0o/SchemaStore.nvim' },
-      { 'williamboman/nvim-lsp-installer' },
+      --[[ { 'williamboman/nvim-lsp-installer' }, ]]
       { 'jose-elias-alvarez/nvim-lsp-ts-utils' },
       {
         'jose-elias-alvarez/null-ls.nvim',
@@ -150,17 +146,6 @@ return packer.startup(function()
     disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'gitsigns'),
   })
 
-  -- floating terminal
-  --[[ use({
-    'voldikss/vim-floaterm',
-    opt = true,
-    event = 'BufWinEnter',
-    config = function()
-      require('cosmic.plugins.terminal')
-    end,
-    disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'terminal'),
-  }) ]]
-
   -- file navigation
   use({
     'nvim-telescope/telescope.nvim',
@@ -180,15 +165,6 @@ return packer.startup(function()
     disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'telescope'),
   })
 
-  -- session/project management
-  --[[ use({
-    'glepnir/dashboard-nvim',
-    config = function()
-      require('cosmic.plugins.dashboard')
-    end,
-    disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'dashboard'),
-  }) ]]
-
   use({
     'rmagatti/auto-session',
     config = function()
@@ -205,6 +181,7 @@ return packer.startup(function()
       'JoosepAlviste/nvim-ts-context-commentstring',
       'nvim-treesitter/nvim-treesitter-refactor',
     },
+    commit = '9bfaf62e42bdcd042df1230e9188487e62a112c0', -- Fixes colors with Monokai
     run = ':TSUpdate',
     config = function()
       require('cosmic.plugins.treesitter')
@@ -247,11 +224,7 @@ return packer.startup(function()
   use({
     'folke/which-key.nvim',
     config = function()
-      require('which-key').setup({
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      })
+      require('which-key').setup()
     end,
   })
 
@@ -261,6 +234,10 @@ return packer.startup(function()
       require('trouble').setup()
     end,
   })
+
+  use({ 'Olical/conjure' })
+
+  use({ 'easymotion/vim-easymotion' })
 
   if user_config.add_plugins and not vim.tbl_isempty(user_config.add_plugins) then
     for _, plugin in pairs(user_config.add_plugins) do

@@ -79,7 +79,7 @@ require('telescope').setup(u.merge({
   },
   pickers = {
     buffers = u.merge(opts_flex, {
-      prompt_title = '✨ Search Buffers ✨',
+      prompt_title = 'Search Buffers',
       mappings = u.merge({
         n = {
           ['d'] = actions.delete_buffer,
@@ -111,7 +111,7 @@ require('telescope').setup(u.merge({
       mappings = default_mappings,
     }),
     find_files = u.merge(opts_flex, {
-      prompt_title = '✨ Search Project ✨',
+      prompt_title = 'Search Project',
       mappings = default_mappings,
       hidden = true,
     }),
@@ -119,16 +119,16 @@ require('telescope').setup(u.merge({
       mappings = default_mappings,
     }),
     git_files = u.merge(opts_flex, {
-      prompt_title = '✨ Search Git Project ✨',
+      prompt_title = 'Search Git Project',
       mappings = default_mappings,
       hidden = true,
     }),
     live_grep = u.merge(opts_flex, {
-      prompt_title = '✨ Live Grep ✨',
+      prompt_title = 'Live Grep',
       mappings = default_mappings,
     }),
     grep_string = u.merge(opts_vertical, {
-      prompt_title = '✨ Grep String ✨',
+      prompt_title = 'Grep String',
       mappings = default_mappings,
     }),
   },
