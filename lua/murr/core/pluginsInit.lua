@@ -19,7 +19,6 @@ return packer.startup(function()
       require('murr.plugins.notify')
     end,
     after = user_config.theme,
-    disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'notify'),
   })
 
   use({
@@ -41,7 +40,6 @@ return packer.startup(function()
       'NvimTreeRefresh',
       'NvimTreeToggle',
     },
-    disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'nvim-tree'),
     event = 'VimEnter',
   })
 
@@ -78,7 +76,6 @@ return packer.startup(function()
         config = function()
           require('murr.lsp.providers.null_ls')
         end,
-        disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'null-ls'),
         after = 'nvim-lspconfig',
       },
       {
@@ -87,7 +84,6 @@ return packer.startup(function()
           require('murr.plugins.lsp-signature')
         end,
         after = 'nvim-lspconfig',
-        disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'lsp_signature'),
       },
     },
     event = 'BufWinEnter',
@@ -123,7 +119,6 @@ return packer.startup(function()
       },
     },
     event = 'InsertEnter',
-    disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'nvim-cmp'),
   })
 
   -- git commands
@@ -131,7 +126,6 @@ return packer.startup(function()
     'tpope/vim-fugitive',
     opt = true,
     cmd = 'Git',
-    disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'fugitive'),
   })
 
   -- git column signs
@@ -143,7 +137,6 @@ return packer.startup(function()
     config = function()
       require('murr.plugins.gitsigns')
     end,
-    disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'gitsigns'),
   })
 
   -- file navigation
@@ -162,7 +155,6 @@ return packer.startup(function()
       require('murr.plugins.telescope')
     end,
     event = 'BufWinEnter',
-    disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'telescope'),
   })
 
   use({
@@ -170,7 +162,6 @@ return packer.startup(function()
     config = function()
       require('murr.plugins.auto-session')
     end,
-    disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'auto-session'),
   })
 
   -- lang/syntax stuff
@@ -186,7 +177,6 @@ return packer.startup(function()
     config = function()
       require('murr.plugins.treesitter')
     end,
-    disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'treesitter'),
   })
 
   -- comments and stuff
@@ -196,7 +186,6 @@ return packer.startup(function()
       require('murr.plugins.comments')
     end,
     event = 'BufWinEnter',
-    disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'comment-nvim'),
   })
 
   -- todo highlights
@@ -207,7 +196,6 @@ return packer.startup(function()
       require('murr.plugins.todo-comments')
     end,
     event = 'BufWinEnter',
-    disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'todo-comments'),
   })
   -- colorized hex codes
   use({
@@ -217,7 +205,6 @@ return packer.startup(function()
     config = function()
       require('colorizer').setup()
     end,
-    disable = vim.tbl_contains(user_config.disable_builtin_plugins, 'colorizer'),
   })
 
   -- Lua
@@ -237,7 +224,15 @@ return packer.startup(function()
 
   use({ 'Olical/conjure' })
 
-  use({ 'easymotion/vim-easymotion' })
+  --[[ use({ 'easymotion/vim-easymotion' }) ]]
+
+  use({
+    'ggandor/lightspeed.nvim',
+    {
+      'romgrk/barbar.nvim',
+      requires = { 'kyazdani42/nvim-web-devicons' },
+    },
+  })
 
   use({ 'nvim-pack/nvim-spectre' })
 

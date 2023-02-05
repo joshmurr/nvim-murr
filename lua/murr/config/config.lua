@@ -54,56 +54,6 @@ local config = {
     -- See Cosmic defaults lsp/providers/tsserver.lua
     ts_utils = {},
   },
-  -- See https://github.com/ray-x/lsp_signature.nvim#full-configuration-with-default-values
-  lsp_signature = {},
-  -- See https://github.com/L3MON4D3/LuaSnip/blob/577045e9adf325e58f690f4d4b4a293f3dcec1b3/README.md#config
-  luasnip = {},
-  -- Default statusline icon
-  statusline = {
-    main_icon = '★',
-  },
-  -- See :h telescope.setup
-  telescope = {},
-  -- Theming, don't forget to run :CosmicReloadSync when changing themes
-  -- Options: 'catppuccin', 'dracula', 'enfocado', 'github', 'gruvbox', 'kanagawa', 'nightfox', 'nord', 'onedark', 'rose-pine',
-  theme = 'monokai', -- don't define or set to nil, if you want to enable your own theme in cosmic/config/plugins.lua
-  -- See https://github.com/folke/todo-comments.nvim#%EF%B8%8F-configuration
-  todo_comments = {},
-  -- See :h nvim-treesitter-quickstart
-  treesitter = {},
-  -- See :h notify.setup
-  notify = {},
-  -- See :h cmp-usage
-  nvim_cmp = {},
-  -- See :h nvim-tree.setup
-  nvim_tree = {},
-  -- Add additional plugins
-  add_plugins = {
-    'ggandor/lightspeed.nvim',
-    {
-      'romgrk/barbar.nvim',
-      requires = { 'kyazdani42/nvim-web-devicons' },
-    },
-  },
-  -- Disable plugins enabled by CosmicNvim
-  disable_builtin_plugins = {
-    --[[
-    'nvim-cmp',
-    'colorizer',
-    'fugitive',
-    'gitsigns',
-    'comment-nvim',
-    'nvim-tree',
-    'telescope',
-    'theme',
-    'todo-comments',
-    'treesitter',
-    ]]
-    'dashboard',
-    'auto-session',
-    'terminal',
-    'galaxyline',
-  },
 }
 
 return config
