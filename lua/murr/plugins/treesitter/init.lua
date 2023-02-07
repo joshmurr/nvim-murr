@@ -2,7 +2,6 @@ local config = require('murr.core.user')
 local u = require('murr.utils')
 
 local defaults = {
-  ensure_installed = 'haxe',
   highlight = {
     enable = true,
     use_languagetree = true,
@@ -21,16 +20,17 @@ local defaults = {
     highlight_definitions = { enable = true },
     highlight_current_scope = { enable = false },
   },
+  ensure_installed = { 'haxe' },
 }
 
 local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
 parser_config.haxe = {
   install_info = {
-    url = '~/Documents/Stuff/tree-sitter-haxe', -- local path or git repo
+    url = 'https://github.com/vantreeseba/tree-sitter-haxe',
     files = { 'src/parser.c' },
-    requires_generate_from_grammar = true,
+    branch = 'main',
   },
-  filetype = 'haxe', -- if filetype does not match the parser name
+  filetype = 'haxe',
 }
 
 require('nvim-treesitter.configs').setup(u.merge(defaults, config.treesitter or {}))

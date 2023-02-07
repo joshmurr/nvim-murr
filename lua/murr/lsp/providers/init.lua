@@ -79,6 +79,11 @@ nvim_lsp.haxe_language_server.setup({
   capabilities = default_config.capabilities,
 })
 
+nvim_lsp.tailwindcss.setup({
+  on_attach = default_config.on_attach,
+  capabilities = default_config.capabilities,
+})
+
 nvim_lsp.jsonls.setup({
   on_attach = default_config.on_attach,
   capabilities = default_config.capabilities,
