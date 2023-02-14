@@ -9,10 +9,9 @@ local default_config = {
   border = 'rounded',
   disable_builtin_plugins = {},
   add_plugins = {},
-  theme = 'tokyonight',
   lsp = {
     format_on_save = true, -- true/false or table of filetypes {'.ts', '.js',}
-    format_timeout = 3000,
+    format_timeout = 5000,
     rename_notification = true,
     servers = {
       astro = true,
@@ -21,7 +20,7 @@ local default_config = {
         format = false,
       },
       pyright = true,
-      sumneko_lua = {
+      lua_ls = {
         format = false,
       },
       html = true,

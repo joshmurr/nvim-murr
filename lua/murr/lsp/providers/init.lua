@@ -47,7 +47,7 @@ nvim_lsp.tsserver.setup({
   end,
 })
 
-nvim_lsp.sumneko_lua.setup({
+nvim_lsp.lua_ls.setup({
   on_attach = default_config.on_attach,
   capabilities = default_config.capabilities,
   settings = {

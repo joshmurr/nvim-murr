@@ -1,5 +1,5 @@
 require('mason').setup()
 
 require('mason-lspconfig').setup({
-  ensure_installed = { 'sumneko_lua', 'tsserver', 'tailwindcss', 'clojure_lsp', 'jsonls' },
+  ensure_installed = { 'lua_ls', 'tsserver', 'tailwindcss', 'clojure_lsp', 'jsonls' },
 })

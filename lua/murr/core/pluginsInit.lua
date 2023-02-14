@@ -236,6 +236,10 @@ return packer.startup(function()
 
   use({ 'nvim-pack/nvim-spectre' })
 
+  use({ 'amadeus/vim-convert-color-to' })
+
+  use({ 'tanvirtin/monokai.nvim' })
+
   if user_config.add_plugins and not vim.tbl_isempty(user_config.add_plugins) then
     for _, plugin in pairs(user_config.add_plugins) do
       use(plugin)
