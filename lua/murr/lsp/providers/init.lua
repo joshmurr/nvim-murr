@@ -102,3 +102,9 @@ nvim_lsp.jsonls.setup({
     },
   },
 })
+
+nvim_lsp.unocss.setup({
+  on_attach = default_config.on_attach,
+  capabilities = default_config.capabilities,
+  filetypes = { 'css', 'scss', 'sass' },
+})

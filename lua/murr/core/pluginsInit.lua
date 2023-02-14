@@ -11,7 +11,7 @@ return packer.startup(function()
   })
 
   -- initialize theme plugins
-  require('murr.theme.plugins').init(use, user_config)
+  require('murr.theme.plugins').init(use)
 
   use({
     'rcarriga/nvim-notify',
@@ -238,7 +238,7 @@ return packer.startup(function()
 
   use({ 'amadeus/vim-convert-color-to' })
 
-  use({ 'tanvirtin/monokai.nvim' })
+  --[[ use({ 'tanvirtin/monokai.nvim' }) ]]
 
   if user_config.add_plugins and not vim.tbl_isempty(user_config.add_plugins) then
     for _, plugin in pairs(user_config.add_plugins) do
