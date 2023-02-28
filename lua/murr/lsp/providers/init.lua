@@ -1,6 +1,7 @@
 local u = require('murr.utils')
 local default_config = require('murr.lsp.providers.defaults')
 local config = require('murr.core.user')
+local path = require('lspconfig/util').path
 
 local nvim_lsp = require('lspconfig')
 
@@ -107,4 +108,39 @@ nvim_lsp.unocss.setup({
   on_attach = default_config.on_attach,
   capabilities = default_config.capabilities,
   filetypes = { 'css', 'scss', 'sass' },
+})
+
+local function get_python_path(workspace)
+  -- Use activated virtualenv.
+  if vim.env.VIRTUAL_ENV then
+    return path.join(vim.env.VIRTUAL_ENV, 'bin', 'python')
+  end
+
+  -- Find and use virtualenv in workspace directory.
+  for _, pattern in ipairs({ '*', '.*' }) do
+    local match = vim.fn.glob(path.join(workspace, pattern, 'pyvenv.cfg'))
+    if match ~= '' then
+      return path.join(path.dirname(match), 'bin', 'python')
+    end
+  end
+
+  -- Fallback to system Python.
+  return exepath('python3') or exepath('python') or 'python'
+end
+
+nvim_lsp.pyright.setup({
+  on_attach = default_config.on_attach,
+  capabilities = default_config.capabilities,
+  settings = {
+    python = {
+      analysis = {
+        typeCheckingMode = 'off',
+        useLibraryCodeForTypes = true,
+        completeFunctionParens = true,
+      },
+    },
+  },
+  before_init = function(_, _config)
+    _config.settings.python.pythonPath = get_python_path(_config.root_dir)
+  end,
 })

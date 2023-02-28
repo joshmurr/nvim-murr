@@ -84,6 +84,7 @@ local default_cmp_opts = {
     { name = 'luasnip' },
     { name = 'buffer' },
     { name = 'path' },
+    { name = 'conjure' },
   }),
   formatting = {
     format = function(entry, vim_item)
