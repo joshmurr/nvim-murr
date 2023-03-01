@@ -104,6 +104,11 @@ nvim_lsp.jsonls.setup({
   },
 })
 
+nvim_lsp.prismals.setup({
+  on_attach = default_config.on_attach,
+  capabilities = default_config.capabilities,
+})
+
 nvim_lsp.unocss.setup({
   on_attach = default_config.on_attach,
   capabilities = default_config.capabilities,
