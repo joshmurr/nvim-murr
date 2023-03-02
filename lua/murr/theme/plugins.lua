@@ -1,9 +1,5 @@
 local M = {}
 
-M.supported_themes = {
-  'monokai',
-}
-
 function M.init(use)
   use({
     'tanvirtin/monokai.nvim',
