@@ -11,9 +11,6 @@ require('notify').setup(u.merge({
     TRACE = icons.trace,
   },
   stages = 'slide',
-  background_colour = require('murr.theme.colors').bg,
 }, config.notify or {}))
 
 vim.notify = require('notify')
-
-require('murr.plugins.notify.highlights')
