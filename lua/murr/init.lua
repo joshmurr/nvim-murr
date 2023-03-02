@@ -1,7 +1,6 @@
 local mods = {
   'murr.compiled',
   'murr.core',
-  'murr.theme',
 }
 
 for _, mod in ipairs(mods) do
