@@ -68,7 +68,7 @@ function M.post_reload(msg)
   local Logger = require('murr.utils.logger')
   unload('murr.utils', true)
   unload('murr.theme', true)
-  unload('murr.plugins.statusline', true)
+  -- unload('murr.plugins.statusline', true)
   msg = msg or 'User config reloaded!'
   Logger:log(msg)
 end

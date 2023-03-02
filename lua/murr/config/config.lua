@@ -17,6 +17,7 @@ local config = {
   -- See :h gitsigns-usage
   gitsigns = {},
   -- LSP settings
+  theme = 'tokyonight',
   lsp = {
     -- True/false or table of filetypes {'.ts', '.js',}
     format_on_save = true,

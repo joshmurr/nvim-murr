@@ -81,3 +81,5 @@ opt.updatetime = 100
 
 -- theme
 opt.termguicolors = true
+
+vim.o.background = 'dark'

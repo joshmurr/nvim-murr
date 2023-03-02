@@ -11,7 +11,8 @@ return packer.startup(function()
   })
 
   -- initialize theme plugins
-  require('murr.theme.plugins').init(use)
+  --[[ require('murr.theme.plugins').monokai(use) ]]
+  require('murr.theme.plugins').tokyonight(use)
 
   use({
     'rcarriga/nvim-notify',
