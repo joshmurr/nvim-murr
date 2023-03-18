@@ -20,6 +20,8 @@ M.init = function()
   -- git navigation
   map('n', '<leader>ggc', ':Telescope git_commits<cr>')
   map('n', '<leader>ggs', ':Telescope git_status<cr>')
+
+  map('n', '<leader>todo', ':TodoTelescope<cr>')
 end
 
 return M
