@@ -38,6 +38,7 @@ function M.tokyonight(use)
         sidebars = { 'qf', 'help', 'packer' },
         on_colors = function(colors)
           colors.bg = '#0b0b0f'
+          colors.green = '#9fdd5b'
         end,
         vim.cmd('color tokyonight'),
       })

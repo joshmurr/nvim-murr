@@ -239,6 +239,18 @@ return packer.startup(function()
 
   use({ 'amadeus/vim-convert-color-to' })
 
+  use({
+    'nvim-treesitter/nvim-treesitter-context',
+    requires = {
+      'nvim-treesitter/nvim-treesitter',
+    },
+    config = function()
+      require('treesitter-context').setup({
+        enable = true,
+      })
+    end,
+  })
+
   --[[ use({ 'tanvirtin/monokai.nvim' }) ]]
 
   if user_config.add_plugins and not vim.tbl_isempty(user_config.add_plugins) then
