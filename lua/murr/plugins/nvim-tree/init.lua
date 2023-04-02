@@ -25,7 +25,10 @@ local args = {
     relativenumber = true,
   },
   git = {
-    ignore = true,
+    ignore = false,
+  },
+  filters = {
+    dotfiles = true,
   },
   renderer = {
     highlight_git = true,
