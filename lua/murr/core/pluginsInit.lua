@@ -172,6 +172,7 @@ return packer.startup(function()
       'windwp/nvim-ts-autotag',
       'JoosepAlviste/nvim-ts-context-commentstring',
       'nvim-treesitter/nvim-treesitter-refactor',
+      'p00f/nvim-ts-rainbow',
     },
     commit = '9bfaf62e42bdcd042df1230e9188487e62a112c0', -- Fixes colors with Monokai
     run = ':TSUpdate',
