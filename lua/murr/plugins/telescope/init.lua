@@ -53,6 +53,11 @@ require('telescope').setup(u.merge({
     selection_caret = icons.folder.arrow_closed,
     file_ignore_patterns = {
       '.git/',
+      'node_modules/',
+      'public/',
+      'dist/',
+      'distPrevious/',
+      'package-lock.json',
     },
     dynamic_preview_title = true,
     vimgrep_arguments = {
