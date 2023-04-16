@@ -51,3 +51,6 @@ map('n', '<leader>xw', '<cmd>TroubleToggle workspace_diagnostics<cr>')
 map('n', '<leader>xq', '<cmd>TroubleToggle quickfix<cr>')
 map('n', '<leader>xl', '<cmd>TroubleToggle loclist<cr>')
 map('n', 'gR', '<cmd>TroubleToggle lsp_references<cr>')
+
+--  Colorizer
+map('n', '<leader>cc', '<cmd>ColorizerToggle<cr>')
