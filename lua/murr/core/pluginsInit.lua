@@ -252,6 +252,8 @@ return packer.startup(function()
     end,
   })
 
+  use({ 'github/copilot.vim' })
+
   --[[ use({ 'tanvirtin/monokai.nvim' }) ]]
 
   if user_config.add_plugins and not vim.tbl_isempty(user_config.add_plugins) then
