@@ -40,8 +40,9 @@ unset('n', 'Y')
 map('n', '<C-l>', ':nohl<CR><C-l>')
 map('n', ':w\\', '<nop>')
 map('n', '<F1>', '<nop>')
---[[ map('n', '<C-n>', ':set invnumber<CR>') -- Toggle line numbers ]]
-map('n', '<C-p>', ':set wrap!<CR>') -- Toggle line wrap
+map('n', ';', '<nop>') -- Prevent annoying jump when trying to save too quickly
+map('n', '<leader>n', ':set invnumber<CR>') -- Toggle line numbers
+map('n', '<leader>p', ':set wrap!<CR>') -- Toggle line wrap
 map('n', ':qt', ':tabclose') -- Close tab
 
 -- Trouble
