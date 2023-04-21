@@ -226,6 +226,14 @@ return packer.startup(function()
   })
 
   use({ 'Olical/conjure' })
+  use({
+    'tpope/vim-sexp-mappings-for-regular-people',
+    requires = {
+      'guns/vim-sexp',
+      'tpope/vim-repeat',
+      'tpope/vim-surround',
+    },
+  })
 
   --[[ use({ 'easymotion/vim-easymotion' }) ]]
 

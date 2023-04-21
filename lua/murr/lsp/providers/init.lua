@@ -133,6 +133,16 @@ local function get_python_path(workspace)
   return exepath('python3') or exepath('python') or 'python'
 end
 
+nvim_lsp.ruff_lsp.setup({
+  on_attach = default_config.on_attach,
+  init_options = {
+    settings = {
+      -- Any extra CLI arguments for `ruff` go here.
+      args = {},
+    },
+  },
+})
+
 nvim_lsp.pyright.setup({
   on_attach = default_config.on_attach,
   capabilities = default_config.capabilities,
