@@ -81,6 +81,13 @@ require('telescope').setup(u.merge({
       case_mode = 'smart_case', -- or "ignore_case" or "respect_case"
       -- the default case_mode is "smart_case"
     },
+    media_files = {
+      -- filetypes whitelist
+      -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
+      --[[ filetypes = {"png", "webp", "jpg", "jpeg"}, ]]
+      -- find command (defaults to `fd`)
+      find_cmd = 'fdfind',
+    },
   },
   pickers = {
     buffers = u.merge(opts_flex, {

@@ -150,10 +150,12 @@ return packer.startup(function()
         'nvim-telescope/telescope-fzf-native.nvim',
         run = 'make',
       },
+      'joshmurr/telescope-media-files.nvim',
     },
     config = function()
       require('murr.plugins.telescope.mappings').init()
       require('murr.plugins.telescope')
+      require('telescope').load_extension('media_files')
     end,
     event = 'BufWinEnter',
   })
