@@ -13,4 +13,10 @@ require('notify').setup(u.merge({
   stages = 'slide',
 }, config.notify or {}))
 
-vim.notify = require('notify')
+vim.notify = function(msg, ...)
+  if msg:match('warning: multiple different client offset_encodings') then
+    return
+  end
+
+  require('notify')(msg, ...)
+end
