@@ -176,7 +176,7 @@ return packer.startup(function()
       'nvim-treesitter/nvim-treesitter-refactor',
       'p00f/nvim-ts-rainbow',
     },
-    commit = '9bfaf62e42bdcd042df1230e9188487e62a112c0', -- Fixes colors with Monokai
+    --[[ commit = '9bfaf62e42bdcd042df1230e9188487e62a112c0', -- Fixes colors with Monokai ]]
     run = ':TSUpdate',
     config = function()
       require('murr.plugins.treesitter')

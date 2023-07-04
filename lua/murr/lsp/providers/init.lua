@@ -16,6 +16,7 @@ local installed_lsps = {
   'pyright',
   'clangd',
   'asm_lsp',
+  'marksman',
 }
 
 local base_setup = {

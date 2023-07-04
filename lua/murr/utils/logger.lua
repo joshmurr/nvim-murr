@@ -1,9 +1,5 @@
-local Logger = {}
-Logger.__index = Logger
-
 local title = 'MurrNvim'
-
-Logger = {}
+local Logger = {}
 Logger.__index = Logger
 
 local function log(type, msg, opts)
