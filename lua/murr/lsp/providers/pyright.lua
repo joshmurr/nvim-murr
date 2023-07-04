@@ -1,4 +1,5 @@
 local path = require('lspconfig/util').path
+local M = {}
 
 local function get_python_path(workspace)
   -- Use activated virtualenv.
@@ -18,17 +19,18 @@ local function get_python_path(workspace)
   return exepath('python3') or exepath('python') or 'python'
 end
 
-return {
-  settings = {
-    python = {
-      analysis = {
-        typeCheckingMode = 'off',
-        useLibraryCodeForTypes = true,
-        completeFunctionParens = true,
-      },
+M.settings = {
+  python = {
+    analysis = {
+      typeCheckingMode = 'off',
+      useLibraryCodeForTypes = true,
+      completeFunctionParens = true,
     },
   },
-  before_init = function(_, config)
-    config.settings.python.pythonPath = get_python_path(config.root_dir)
-  end,
 }
+
+M.before_init = function(_, config)
+  config.settings.python.pythonPath = get_python_path(config.root_dir)
+end
+
+return M

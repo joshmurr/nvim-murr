@@ -1,4 +1,6 @@
-local opts = {
+local M = {}
+
+M.settings = {
   settings = {
     json = {
       schemas = require('schemastore').json.schemas(),
@@ -15,4 +17,4 @@ local opts = {
   },
 }
 
-return opts
+return M
