@@ -1,7 +1,7 @@
 local Logger = {}
 Logger.__index = Logger
 
-local title = 'CosmicNvim'
+local title = 'MurrNvim'
 
 Logger = {}
 Logger.__index = Logger

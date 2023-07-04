@@ -1,7 +1,7 @@
 local config = require('murr.core.user')
 local icons = require('murr.theme.icons')
 local u = require('murr.utils')
-local augroup_name = 'CosmicNvimNvimTree'
+local augroup_name = 'MurrNvimNvimTree'
 local group = vim.api.nvim_create_augroup(augroup_name, { clear = true })
 
 -- set up args
