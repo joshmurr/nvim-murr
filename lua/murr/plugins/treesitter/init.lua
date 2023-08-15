@@ -21,7 +21,7 @@ local defaults = {
     highlight_current_scope = { enable = false },
   },
   rainbow = {
-    enable = true,
+    enable = false,
     -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
     extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
     max_file_lines = 3000, -- Do not enable for files with more than n lines, int

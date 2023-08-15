@@ -22,6 +22,7 @@ local installed_lsps = {
 local base_setup = {
   on_attach = default_config.on_attach,
   capabilities = default_config.capabilities,
+  root_dir = default_config.root_dir,
 }
 
 for _, lsp in ipairs(installed_lsps) do
