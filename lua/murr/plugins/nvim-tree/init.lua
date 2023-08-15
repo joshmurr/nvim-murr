@@ -44,7 +44,7 @@ local args = {
   },
 }
 
--- Autoclose nvim is nvim-tree is only buffer open
+-- Autoclose nvim if nvim-tree is only buffer open
 vim.api.nvim_create_autocmd('BufEnter', {
   command = [[if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif]],
   group = group,

@@ -1,4 +1,4 @@
-local augroup_name = 'CosmicNvimLspFormat'
+local augroup_name = 'MurrNvimLspFormat'
 local group = vim.api.nvim_create_augroup(augroup_name, { clear = true })
 local config = require('murr.core.user')
 
