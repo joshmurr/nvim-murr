@@ -265,7 +265,13 @@ return packer.startup(function()
 
   use({ 'github/copilot.vim' })
 
-  --[[ use({ 'tanvirtin/monokai.nvim' }) ]]
+  use({
+    'danymat/neogen',
+    config = function()
+      require('neogen').setup({})
+    end,
+    requires = 'nvim-treesitter/nvim-treesitter',
+  })
 
   if user_config.add_plugins and not vim.tbl_isempty(user_config.add_plugins) then
     for _, plugin in pairs(user_config.add_plugins) do
