@@ -17,9 +17,11 @@ if config.lsp.format_on_save then
       vim.lsp.buf.format({
         timeout_ms = config.lsp.format_timeout,
         -- check user config to see if we can format on save
-        filter = function(client)
-          return config.lsp.can_client_format(client.name)
-        end,
+        --[[ FIXME: This filter is causing problems somehoe with .tsx files.... ]]
+        --[[ filter = function(client) ]]
+        --[[ return config.lsp.can_client_format(client.name) ]]
+        --[[ return true ]]
+        --[[ end, ]]
       })
     end,
     group = group,
