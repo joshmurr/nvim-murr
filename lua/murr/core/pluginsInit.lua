@@ -268,10 +268,33 @@ return packer.startup(function()
   use({
     'danymat/neogen',
     config = function()
-      require('neogen').setup({})
+      require('neogen').setup({
+        snippet_engine = 'luasnip',
+        languages = {
+          javascript = {
+            template = {
+              annotation_convention = 'jsdoc',
+            },
+          },
+          typescript = {
+            template = {
+              annotation_convention = 'tsdoc',
+            },
+          },
+          typescriptreact = {
+            template = {
+              annotation_convention = 'tsdoc',
+            },
+          },
+        },
+      })
     end,
     requires = 'nvim-treesitter/nvim-treesitter',
+    -- Uncomment next line if you want to follow only stable versions
+    -- tag = "*"
   })
+
+  --[[ use({ 'tanvirtin/monokai.nvim' }) ]]
 
   if user_config.add_plugins and not vim.tbl_isempty(user_config.add_plugins) then
     for _, plugin in pairs(user_config.add_plugins) do

@@ -127,7 +127,7 @@ function M.update()
       end,
       on_exit = function()
         if vim.tbl_isempty(errors) then
-          Logger:log('Updated! Running CosmicReloadSync...')
+          Logger:log('Updated! Running MurrReloadSync...')
           M.reload_user_config_sync()
         else
           table.insert(errors, 1, 'Something went wrong! Please pull changes manually.')

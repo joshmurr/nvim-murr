@@ -2,6 +2,26 @@ local config = require('murr.core.user')
 local u = require('murr.utils')
 
 local defaults = {
+  ensure_installed = {
+    'c',
+    'lua',
+    'vim',
+    'vimdoc',
+    'query',
+    'help',
+    'clojure',
+    --[[ 'tsx', ]]
+    'typescript',
+    'javascript',
+    'json',
+    'jsonc',
+    'html',
+    'css',
+    'scss',
+    'yaml',
+    'toml',
+    'haxe',
+  },
   highlight = {
     enable = true,
     use_languagetree = true,
