@@ -12,7 +12,7 @@ if config_opts.default_cosmic_sources then
   config_opts.sources = u.merge_list({
     null_ls.builtins.code_actions.eslint_d,
     null_ls.builtins.diagnostics.eslint_d,
-    null_ls.builtins.formatting.eslint_d,
+    --[[ null_ls.builtins.formatting.eslint_d, ]]
     --[[ null_ls.builtins.diagnostics.marksman, ]]
     --[[ null_ls.builtins.formatting.marksman, ]]
     null_ls.builtins.formatting.shfmt,
