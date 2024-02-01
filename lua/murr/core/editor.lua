@@ -15,6 +15,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 })
 
 g.mapleader = ' '
+g.maplocalleader = '\\'
 
 -- misc
 opt.backspace = { 'eol', 'start', 'indent' }

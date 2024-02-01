@@ -23,6 +23,7 @@ if config_opts.default_cosmic_sources then
     }),
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.code_actions.gitsigns,
+    null_ls.builtins.formatting.zprint,
   }, config_opts.sources or {})
 end
 
