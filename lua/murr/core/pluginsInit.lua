@@ -237,8 +237,6 @@ return packer.startup(function()
     },
   })
 
-  --[[ use({ 'easymotion/vim-easymotion' }) ]]
-
   use({
     'ggandor/lightspeed.nvim',
     {
@@ -248,21 +246,7 @@ return packer.startup(function()
   })
 
   use({ 'nvim-pack/nvim-spectre' })
-
   use({ 'amadeus/vim-convert-color-to' })
-
-  use({
-    'nvim-treesitter/nvim-treesitter-context',
-    requires = {
-      'nvim-treesitter/nvim-treesitter',
-    },
-    config = function()
-      require('treesitter-context').setup({
-        enable = true,
-      })
-    end,
-  })
-
   use({ 'github/copilot.vim' })
 
   use({
@@ -293,8 +277,6 @@ return packer.startup(function()
     -- Uncomment next line if you want to follow only stable versions
     -- tag = "*"
   })
-
-  --[[ use({ 'tanvirtin/monokai.nvim' }) ]]
 
   if user_config.add_plugins and not vim.tbl_isempty(user_config.add_plugins) then
     for _, plugin in pairs(user_config.add_plugins) do
