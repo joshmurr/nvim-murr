@@ -19,8 +19,7 @@ if config.lsp.format_on_save then
         -- check user config to see if we can format on save
         --[[ FIXME: This filter is causing problems somehoe with .tsx files.... ]]
         --[[ filter = function(client) ]]
-        --[[ return config.lsp.can_client_format(client.name) ]]
-        --[[ return true ]]
+        --[[   return config.lsp.can_client_format(client.name) ]]
         --[[ end, ]]
       })
     end,
