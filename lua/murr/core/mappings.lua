@@ -1,15 +1,5 @@
 local map = require('murr.utils').map
-local user_plugins = require('murr.core.user')
 local unset = vim.api.nvim_del_keymap
-
--- Mappings for plugins that need to be lazy loaded
-if not vim.tbl_contains(user_plugins.disable_builtin_plugins, 'nvim-tree') then
-  require('murr.plugins.nvim-tree.mappings')
-end
-
-if not vim.tbl_contains(user_plugins.disable_builtin_plugins, 'auto-session') then
-  require('murr.plugins.auto-session.mappings')
-end
 
 -- Quickfix mappings
 map('n', '<leader>ck', ':cexpr []<cr>')

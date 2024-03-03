@@ -1,5 +1,15 @@
-local config = require('murr.core.user')
-local u = require('murr.utils')
+
+return {
+	"nvim-treesitter/nvim-treesitter",
+	   event = { "BufReadPre", "BufNewFile" },
+    build = ":TSUpdate",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      "windwp/nvim-ts-autotag",
+		  'JoosepAlviste/nvim-ts-context-commentstring',
+
+    },
+	config = function ()
 
 local defaults = {
   ensure_installed = {
@@ -8,7 +18,7 @@ local defaults = {
     'vim',
     'vimdoc',
     'query',
-    'help',
+--    'help',
     'clojure',
     'typescript',
     'javascript',
@@ -45,8 +55,11 @@ local defaults = {
   },
 }
 
+require('nvim-treesitter.configs').setup(defaults)
 require('ts_context_commentstring').setup({
   enable_autocmd = false,
 })
 
-require('nvim-treesitter.configs').setup(u.merge(defaults, config.treesitter or {}))
+
+end
+}

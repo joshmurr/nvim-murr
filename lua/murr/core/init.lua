@@ -1,7 +1,6 @@
 local cosmic_modules = {
   'murr.core.disabled',
   'murr.core.editor',
-  'murr.core.pluginsInit',
   'murr.core.commands',
   'murr.core.mappings',
   'murr.config.editor',

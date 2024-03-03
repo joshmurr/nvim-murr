@@ -1,20 +1,3 @@
---[[ local mods = {
-  'murr.compiled',
-  'murr.core',
-}
-
-for _, mod in ipairs(mods) do
-  local ok, err = pcall(require, mod)
-  if mod == 'murr.compiled' and not ok then
-    vim.notify('Run :PackerCompile!', vim.log.levels.WARN, {
-      title = 'MurrNvim',
-    })
-  elseif not ok and not mod:find('murr.core.user') then
-    error(('Error loading %s...\n\n%s'):format(mod, err))
-  end
-
-end ]]
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -28,6 +11,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+require("murr.core")
+
 require("lazy").setup({
   {
     "folke/tokyonight.nvim",
@@ -35,6 +20,13 @@ require("lazy").setup({
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- load the colorscheme here
+
+      require('tokyonight').setup({
+        on_colors = function(colors)
+          colors.bg = '#0b0b0f'
+          colors.green = '#9fdd5b'
+        end,
+	})
       vim.cmd([[colorscheme tokyonight]])
     end,
   },
@@ -43,5 +35,7 @@ require("lazy").setup({
   { "hrsh7th/cmp-nvim-lsp", },
   { import = "murr.lsp.lspconfig" },
   { import = "murr.lsp.none-ls" },
-  { import = "murr.lsp.mason" }
+  { import = "murr.lsp.mason" },
+  { import = "murr.plugins.telescope" },
+  { import = "murr.plugins.treesitter" },
 })

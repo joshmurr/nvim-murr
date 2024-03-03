@@ -26,10 +26,6 @@ function M.init(client, bufnr)
   -- hover
   set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
 
-  -- code actions
-  set_keymap('n', '<leader>ga', '<cmd>lua require("cosmic-ui").code_actions()<cr>')
-  set_keymap('v', '<leader>ga', '<cmd>lua require("cosmic-ui").range_code_actions()<cr>')
-
   -- formatting
   set_keymap('n', '<leader>gf', '<cmd>lua vim.lsp.buf.formatting()<cr>')
   set_keymap('v', '<leader>gf', '<cmd>lua vim.lsp.buf.range_formatting()<cr>')
