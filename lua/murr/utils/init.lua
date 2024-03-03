@@ -1,6 +1,4 @@
 local M = {}
-local augroup_name = 'MurrNvimUtils'
-local group = vim.api.nvim_create_augroup(augroup_name, { clear = true })
 
 function M.map(mode, lhs, rhs, opts)
   local defaults = {
@@ -48,113 +46,21 @@ function M.get_active_lsp_client_names()
   return client_names
 end
 
-local function unload(module_pattern, reload)
-  reload = reload or false
-  for module, _ in pairs(package.loaded) do
-    if module:match(module_pattern) then
-      package.loaded[module] = nil
-      if reload then
-        require(module)
-      end
-    end
-  end
-end
-
-local function clear_cache()
-  vim.cmd(':LuaCacheClear')
-end
-
-function M.post_reload(msg)
-  local Logger = require('murr.utils.logger')
-  unload('murr.utils', true)
-  unload('murr.theme', true)
-  -- unload('murr.plugins.statusline', true)
-  msg = msg or 'User config reloaded!'
-  Logger:log(msg)
-end
-
-function M.reload_user_config_sync()
-  clear_cache()
-  unload('murr.core.user', true)
-  unload('murr.core.pluginsInit', true)
-  vim.api.nvim_create_autocmd('User PackerComplete', {
-    callback = function()
-      M.post_reload()
-    end,
-    group = group,
-    once = true,
-  })
-  vim.cmd(':PackerSync')
-end
-
-function M.reload_user_config(compile)
-  compile = compile or false
-  unload('murr.core.user', true)
-  if compile then
-    vim.api.nvim_create_autocmd('User PackerCompileDone', {
-      callback = function()
-        M.post_reload()
-      end,
-      group = group,
-      once = true,
-    })
-    vim.cmd(':PackerCompile')
-  end
-end
-
-function M.get_install_dir()
-  local config_dir = os.getenv('COSMICNVIM_INSTALL_DIR')
-  if not config_dir then
-    return vim.fn.stdpath('config')
-  end
-  return config_dir
-end
-
--- update instance of CosmicNvim
-function M.update()
-  local Logger = require('murr.utils.logger')
-  local Job = require('plenary.job')
-  local path = M.get_install_dir()
-  local errors = {}
-
-  Job
-    :new({
-      command = 'git',
-      args = { 'pull', '--ff-only' },
-      cwd = path,
-      on_start = function()
-        Logger:log('Updating...')
-      end,
-      on_exit = function()
-        if vim.tbl_isempty(errors) then
-          Logger:log('Updated! Running MurrReloadSync...')
-          M.reload_user_config_sync()
-        else
-          table.insert(errors, 1, 'Something went wrong! Please pull changes manually.')
-          table.insert(errors, 2, '')
-          Logger:error('Update failed!', { timeout = 30000 })
-        end
-      end,
-      on_stderr = function(_, err)
-        table.insert(errors, err)
-      end,
-    })
-    :sync()
-end
-
 local function dump_table(o)
-  print("Dumping...", o, type(0))
-   if type(o) == 'table' then
-      local s = ''
-      for k,v in pairs(o) do
-        print(k, v)
-         if type(k) ~= 'number' then k = '"'..k..'"' end
-         s = s .. '['..k..'] = ' .. dump_table(v) .. ','
+  print('Dumping...', o, type(0))
+  if type(o) == 'table' then
+    local s = ''
+    for k, v in pairs(o) do
+      print(k, v)
+      if type(k) ~= 'number' then
+        k = '"' .. k .. '"'
       end
-      return s
-   else
-      return tostring(o)
-   end
+      s = s .. '[' .. k .. '] = ' .. dump_table(v) .. ','
+    end
+    return s
+  else
+    return tostring(o)
+  end
 end
 
 M.dump_table = dump_table

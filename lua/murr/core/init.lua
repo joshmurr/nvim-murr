@@ -1,14 +1,13 @@
-local cosmic_modules = {
+local modules = {
   'murr.core.disabled',
   'murr.core.editor',
   'murr.core.commands',
   'murr.core.mappings',
-  'murr.config.editor',
 }
 
-for _, mod in ipairs(cosmic_modules) do
+for _, mod in ipairs(modules) do
   local ok, err = pcall(require, mod)
-  if not ok and not mod:find('murr.config') then
+  if not ok then
     error(('Error loading %s...\n\n%s'):format(mod, err))
   end
 end
