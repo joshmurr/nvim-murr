@@ -34,8 +34,8 @@ require("lazy").setup({
   { "nvim-lua/plenary.nvim" },
   { "hrsh7th/cmp-nvim-lsp", },
   { import = "murr.lsp.lspconfig" },
-  { import = "murr.lsp.none-ls" },
   { import = "murr.lsp.mason" },
+  { import = "murr.lsp.none_ls" },
   { import = "murr.plugins.telescope" },
   { import = "murr.plugins.treesitter" },
 })

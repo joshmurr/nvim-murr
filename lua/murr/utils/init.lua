@@ -142,4 +142,21 @@ function M.update()
     :sync()
 end
 
+local function dump_table(o)
+  print("Dumping...", o, type(0))
+   if type(o) == 'table' then
+      local s = ''
+      for k,v in pairs(o) do
+        print(k, v)
+         if type(k) ~= 'number' then k = '"'..k..'"' end
+         s = s .. '['..k..'] = ' .. dump_table(v) .. ','
+      end
+      return s
+   else
+      return tostring(o)
+   end
+end
+
+M.dump_table = dump_table
+
 return M
