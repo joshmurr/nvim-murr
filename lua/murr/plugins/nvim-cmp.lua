@@ -1,5 +1,10 @@
 local has_words_before = function()
-  local line, col = table.unpack(vim.api.nvim_win_get_cursor(0))
+  -- [[
+  -- Linter gives the following warning:
+  -- Deprecated.(Defined in Lua 5.1/LuaJIT, current is Lua 5.4.) Lua Diagnostics.
+  -- But seems to run fine in Neovim 0.9.5
+  -- ]]
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 end
 
@@ -34,13 +39,18 @@ return {
         end,
       },
       mapping = cmp.mapping.preset.insert({
-        ['<C-k>'] = cmp.mapping.select_prev_item(), -- previous suggestion
-        ['<C-j>'] = cmp.mapping.select_next_item(), -- next suggestion
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(), -- show completion suggestions
-        ['<C-e>'] = cmp.mapping.abort(), -- close completion window
-        ['<CR>'] = cmp.mapping.confirm({ select = false }),
+        ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+        ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+        ['<C-e>'] = cmp.mapping({
+          i = cmp.mapping.abort(),
+          c = cmp.mapping.close(),
+        }),
+        -- disabled for autopairs mapping
+        ['<CR>'] = cmp.mapping.confirm({
+          behavior = cmp.ConfirmBehavior.Insert,
+          select = true,
+        }),
         ['<Tab>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
@@ -51,7 +61,31 @@ return {
           else
             fallback()
           end
-        end, { 'i', 's' }),
+        end, {
+          'i',
+          's',
+        }),
+        ['<S-Tab>'] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_prev_item()
+          elseif luasnip.jumpable(-1) then
+            luasnip.jump(-1)
+          else
+            fallback()
+          end
+        end, {
+          'i',
+          's',
+        }),
+        ['<C-j>'] = cmp.mapping(function(fallback)
+          cmp.mapping.abort()
+          local copilot_keys = vim.fn['copilot#Accept']()
+          if copilot_keys ~= '' then
+            vim.api.nvim_feedkeys(copilot_keys, 'i', true)
+          else
+            fallback()
+          end
+        end),
       }),
       -- sources for autocompletion
       sources = cmp.config.sources({
