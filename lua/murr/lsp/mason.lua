@@ -31,6 +31,7 @@ return {
         'eslint',
         'html',
         'cssls',
+        'clojure_lsp',
         'tailwindcss',
         'svelte',
         'lua_ls',

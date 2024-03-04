@@ -1,15 +1,13 @@
 return {
   'nvimtools/none-ls.nvim', -- configure formatters & linters
   lazy = false,
-  event = { "BufReadPre", "BufNewFile" }, -- to enable uncomment this
+  event = { 'BufReadPre', 'BufNewFile' }, -- to enable uncomment this
   dependencies = {
     'jay-babu/mason-null-ls.nvim',
   },
   config = function()
     local mason_null_ls = require('mason-null-ls')
-
     local null_ls = require('null-ls')
-
     local null_ls_utils = require('null-ls.utils')
 
     mason_null_ls.setup({
@@ -18,16 +16,16 @@ return {
         'stylua', -- lua formatter
         'black', -- python formatter
         'pylint', -- python linter
+        'clj_kondo', -- clojure linter
+        'zprint', -- clojure formatter
       },
     })
 
-    -- for conciseness
-    local formatting = null_ls.builtins.formatting -- to setup formatters
-    local diagnostics = null_ls.builtins.diagnostics -- to setup linters
+    local formatting = null_ls.builtins.formatting
+    local diagnostics = null_ls.builtins.diagnostics
 
     -- to setup format on save
     local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
-
 
     -- configure null_ls
     null_ls.setup({
@@ -40,11 +38,13 @@ return {
         --  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
         formatting.prettier.with({
           extra_filetypes = { 'svelte' },
-        }), -- js/ts formatter
-        formatting.stylua, -- lua formatter
+        }),
+        formatting.stylua,
         formatting.isort,
         formatting.black,
         diagnostics.pylint,
+        diagnostics.clj_kondo,
+        formatting.zprint,
       },
       -- configure format on save
       on_attach = function(current_client, bufnr)
