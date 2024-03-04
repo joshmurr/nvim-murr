@@ -48,3 +48,10 @@ map('n', '<leader>cc', '<cmd>ColorizerToggle<cr>')
 
 -- Nvim Tree
 map('n', '<C-n>', '<cmd>NvimTreeToggle<CR>', { desc = 'Toggle file explorer' }) -- toggle file explorer
+
+-- Telescope
+map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { desc = 'Fuzzy find files in cwd' })
+map('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>', { desc = 'Fuzzy find recent files' })
+map('n', '<leader>fs', '<cmd>Telescope live_grep<cr>', { desc = 'Find string in cwd' })
+map('n', '<leader>fc', '<cmd>Telescope grep_string<cr>', { desc = 'Find string under cursor in cwd' })
+map('n', '<leader>fd', '<cmd>Telescope diagnostics<cr>', { desc = 'Show buffer diagnostics' })
