@@ -1,14 +1,5 @@
-local cmd = vim.cmd
 local opt = vim.opt
-local g = vim.g
 local indent = 2
-
-cmd([[
-	filetype plugin indent on
-]])
-
-g.mapleader = ' '
-g.maplocalleader = '\\'
 
 -- misc
 opt.backspace = { 'eol', 'start', 'indent' }
@@ -77,11 +68,3 @@ opt.updatetime = 100
 opt.termguicolors = true
 
 vim.o.background = 'dark'
-
--- copilot
-vim.g.copilot_no_tab_map = true
-vim.g.copilot_assume_mapped = true
-vim.g.copilot_tab_fallback = ''
-
---comments
-vim.g.skip_ts_context_commentstring_module = true

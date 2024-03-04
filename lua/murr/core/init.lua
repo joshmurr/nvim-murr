@@ -1,7 +1,8 @@
 local modules = {
   'murr.core.disabled',
-  'murr.core.editor',
+  'murr.core.options',
   'murr.core.commands',
+  'murr.core.globals',
   'murr.core.mappings',
 }
 
