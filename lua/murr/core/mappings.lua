@@ -47,7 +47,7 @@ map('n', 'gR', '<cmd>TroubleToggle lsp_references<cr>')
 map('n', '<leader>cc', '<cmd>ColorizerToggle<cr>')
 
 -- Nvim Tree
-map('n', '<C-n>', '<cmd>NvimTreeToggle<CR>', { desc = 'Toggle file explorer' }) -- toggle file explorer
+map('n', '<C-n>', '<cmd>NvimTreeFindFileToggle<CR>', { desc = 'Toggle file explorer' }) -- toggle file explorer
 
 -- Telescope
 map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { desc = 'Fuzzy find files in cwd' })

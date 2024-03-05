@@ -1,12 +1,11 @@
 return {
-  "nvim-treesitter/nvim-treesitter",
-  event = { "BufReadPre", "BufNewFile" },
-  build = ":TSUpdate",
+  'nvim-treesitter/nvim-treesitter',
+  event = { 'BufReadPre', 'BufNewFile' },
+  build = ':TSUpdate',
   dependencies = {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    "windwp/nvim-ts-autotag",
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    'windwp/nvim-ts-autotag',
     'JoosepAlviste/nvim-ts-context-commentstring',
-
   },
   config = function()
     local defaults = {
@@ -16,10 +15,11 @@ return {
         'vim',
         'vimdoc',
         'query',
-        --    'help',
         'clojure',
         'typescript',
+        'tsx',
         'javascript',
+        'prisma',
         'json',
         'jsonc',
         'html',
@@ -57,5 +57,5 @@ return {
     require('ts_context_commentstring').setup({
       enable_autocmd = false,
     })
-  end
+  end,
 }

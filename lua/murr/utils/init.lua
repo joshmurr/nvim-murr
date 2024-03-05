@@ -73,4 +73,15 @@ M.get_relative_path = function(file_path)
   return './' .. relative_path
 end
 
+M.load_modules = function(o)
+  if type(o) == 'table' then
+    for _, mod in ipairs(o) do
+      local ok, err = pcall(require, mod)
+      if not ok then
+        error(('Error loading %s...\n\n%s'):format(mod, err))
+      end
+    end
+  end
+end
+
 return M
