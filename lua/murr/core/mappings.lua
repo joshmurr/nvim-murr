@@ -1,15 +1,5 @@
 local map = require('murr.utils').map
-local user_plugins = require('murr.core.user')
 local unset = vim.api.nvim_del_keymap
-
--- Mappings for plugins that need to be lazy loaded
-if not vim.tbl_contains(user_plugins.disable_builtin_plugins, 'nvim-tree') then
-  require('murr.plugins.nvim-tree.mappings')
-end
-
-if not vim.tbl_contains(user_plugins.disable_builtin_plugins, 'auto-session') then
-  require('murr.plugins.auto-session.mappings')
-end
 
 -- Quickfix mappings
 map('n', '<leader>ck', ':cexpr []<cr>')
@@ -36,10 +26,10 @@ map('n', '<C-Left>', ':vertical resize -2<CR>')
 map('n', '<C-Right>', ':vertical resize +2<CR>')
 
 -- Mine --
-unset('n', 'Y')
-map('n', '<C-l>', ':nohl<CR><C-l>')
+unset('n', 'Y') -- Allows for yanking whole line
+map('n', '<C-l>', ':nohl<CR><C-l>') -- Clears highlights
 map('n', ':w\\', '<nop>')
-map('n', '<F1>', '<nop>')
+map('n', '<F1>', '<nop>') -- Turns off help menu
 map('n', ';', '<nop>') -- Prevent annoying jump when trying to save too quickly
 map('n', '<leader>n', ':set invnumber<CR>') -- Toggle line numbers
 map('n', '<leader>p', ':set wrap!<CR>') -- Toggle line wrap
@@ -55,3 +45,13 @@ map('n', 'gR', '<cmd>TroubleToggle lsp_references<cr>')
 
 --  Colorizer
 map('n', '<leader>cc', '<cmd>ColorizerToggle<cr>')
+
+-- Nvim Tree
+map('n', '<C-n>', '<cmd>NvimTreeFindFileToggle<CR>', { desc = 'Toggle file explorer' }) -- toggle file explorer
+
+-- Telescope
+map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { desc = 'Fuzzy find files in cwd' })
+map('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>', { desc = 'Fuzzy find recent files' })
+map('n', '<leader>fs', '<cmd>Telescope live_grep<cr>', { desc = 'Find string in cwd' })
+map('n', '<leader>fc', '<cmd>Telescope grep_string<cr>', { desc = 'Find string under cursor in cwd' })
+map('n', '<leader>fd', '<cmd>Telescope diagnostics<cr>', { desc = 'Show buffer diagnostics' })
