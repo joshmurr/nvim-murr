@@ -44,7 +44,9 @@ map('n', '<leader>xl', '<cmd>TroubleToggle loclist<cr>')
 map('n', 'gR', '<cmd>TroubleToggle lsp_references<cr>')
 
 --  Colorizer
-map('n', '<leader>cc', '<cmd>ColorizerToggle<cr>')
+-- [[ Colorizer is lazy loaded so we need to require it to use it ]]
+map('n', '<leader>cc', '<cmd>lua require("colorizer").attach_to_buffer(0, { mode = "virtualtext", css = true })<cr>')
+map('n', '<leader>cx', '<cmd>lua require("colorizer").detach_from_buffer(0)<cr>')
 
 -- Nvim Tree
 map('n', '<C-n>', '<cmd>NvimTreeFindFileToggle<CR>', { desc = 'Toggle file explorer' }) -- toggle file explorer
