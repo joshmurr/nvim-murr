@@ -19,8 +19,7 @@ map('n', '<leader>tp', ':tabprevious<cr>')
 map('n', '<leader>tn', ':tabnext<cr>')
 map('n', '<leader>td', ':tabclose<cr>')
 
--- resize with arrows
-map('n', '<C-Up>', ':resize -2<CR>')
+-- resize with arrows map('n', '<C-Up>', ':resize -2<CR>')
 map('n', '<C-Down>', ':resize +2<CR>')
 map('n', '<C-Left>', ':vertical resize -2<CR>')
 map('n', '<C-Right>', ':vertical resize +2<CR>')
@@ -57,3 +56,6 @@ map('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>', { desc = 'Fuzzy find recen
 map('n', '<leader>fs', '<cmd>Telescope live_grep<cr>', { desc = 'Find string in cwd' })
 map('n', '<leader>fc', '<cmd>Telescope grep_string<cr>', { desc = 'Find string under cursor in cwd' })
 map('n', '<leader>fd', '<cmd>Telescope diagnostics<cr>', { desc = 'Show buffer diagnostics' })
+
+-- Lazy Git
+map('n', '<leader>gg', '<cmd>LazyGit<cr>', { desc = 'Open LazyGit' })
