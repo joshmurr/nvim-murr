@@ -146,5 +146,9 @@ return {
         },
       },
     })
+
+    lspconfig['mdx_analyzer'].setup({
+      filetypes = { 'mdx' },
+    })
   end,
 }

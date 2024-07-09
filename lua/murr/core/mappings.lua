@@ -44,7 +44,7 @@ map('n', 'gR', '<cmd>TroubleToggle lsp_references<cr>')
 
 --  Colorizer
 -- [[ Colorizer is lazy loaded so we need to require it to use it ]]
-map('n', '<leader>cc', '<cmd>lua require("colorizer").attach_to_buffer(0, { mode = "virtualtext", css = true })<cr>')
+map('n', '<leader>cc', '<cmd>lua require("colorizer").attach_to_buffer(0, { css = true })<cr>')
 map('n', '<leader>cx', '<cmd>lua require("colorizer").detach_from_buffer(0)<cr>')
 
 -- Nvim Tree
@@ -56,6 +56,7 @@ map('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>', { desc = 'Fuzzy find recen
 map('n', '<leader>fs', '<cmd>Telescope live_grep<cr>', { desc = 'Find string in cwd' })
 map('n', '<leader>fc', '<cmd>Telescope grep_string<cr>', { desc = 'Find string under cursor in cwd' })
 map('n', '<leader>fd', '<cmd>Telescope diagnostics<cr>', { desc = 'Show buffer diagnostics' })
+map('n', '<leader>ft', '<cmd>TodoTelescope<cr>', { desc = 'Find TODO comments' })
 
 -- Lazy Git
 map('n', '<leader>gg', '<cmd>LazyGit<cr>', { desc = 'Open LazyGit' })

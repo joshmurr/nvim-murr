@@ -57,5 +57,7 @@ return {
     require('ts_context_commentstring').setup({
       enable_autocmd = false,
     })
+
+    vim.treesitter.language.register('markdown', 'mdx')
   end,
 }
