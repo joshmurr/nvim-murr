@@ -56,7 +56,11 @@ map('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>', { desc = 'Fuzzy find recen
 map('n', '<leader>fs', '<cmd>Telescope live_grep<cr>', { desc = 'Find string in cwd' })
 map('n', '<leader>fc', '<cmd>Telescope grep_string<cr>', { desc = 'Find string under cursor in cwd' })
 map('n', '<leader>fd', '<cmd>Telescope diagnostics<cr>', { desc = 'Show buffer diagnostics' })
-map('n', '<leader>ft', '<cmd>TodoTelescope<cr>', { desc = 'Find TODO comments' })
+map('n', '<leader>ft', '<cmd>TodoTelescope<cr>', { desc = 'Find all comments' })
+map('n', '<leader>ftt', '<cmd>TodoTelescope keywords=TODO<cr>', { desc = 'Find TODO comments' })
+map('n', '<leader>ftf', '<cmd>TodoTelescope keywords=FIX<cr>', { desc = 'Find FIX comments' })
+map('n', '<leader>ftb', '<cmd>TodoTelescope keywords=BUG<cr>', { desc = 'Find BUG comments' })
+map('n', '<leader>ftn', '<cmd>TodoTelescope keywords=NOTE<cr>', { desc = 'Find NOTE comments' })
 
 -- Lazy Git
 map('n', '<leader>gg', '<cmd>LazyGit<cr>', { desc = 'Open LazyGit' })
