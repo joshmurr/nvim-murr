@@ -66,7 +66,7 @@ map('n', '<leader>ftn', '<cmd>TodoTelescope keywords=NOTE<cr>', { desc = 'Find N
 map('n', '<leader>gg', '<cmd>LazyGit<cr>', { desc = 'Open LazyGit' })
 
 -- Goto-Preview
-map('n', 'P', '<cmd>lua require("goto-preview").goto_preview_definition()<CR>')
+map('n', 'KK', '<cmd>lua require("goto-preview").goto_preview_definition()<CR>')
 map('n', 'gpt', '<cmd>lua require("goto-preview").goto_preview_type_definition()<CR>')
 map('n', 'gpi', '<cmd>lua require("goto-preview").goto_preview_implementation()<CR>')
 map('n', 'gpD', '<cmd>lua require("goto-preview").goto_preview_declaration()<CR>')
