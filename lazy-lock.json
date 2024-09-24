@@ -9,6 +9,7 @@
   "codeium.vim": { "branch": "main", "commit": "31dd2962c81759be007895db6ce089feec397c86" },
   "conjure": { "branch": "master", "commit": "dfb9f75010a181c090ab905b2a2b4180aea20f15" },
   "friendly-snippets": { "branch": "main", "commit": "dcd4a586439a1c81357d5b9d26319ae218cc9479" },
+  "gitsigns.nvim": { "branch": "main", "commit": "1ef74b546732f185d0f806860fa5404df7614f28" },
   "goto-preview": { "branch": "main", "commit": "1519ea3512828c944eed5b2bbb66a8f8deb92447" },
   "lazy.nvim": { "branch": "main", "commit": "83493db50a434a4c5c648faf41e2ead80f96e478" },
   "lazygit.nvim": { "branch": "main", "commit": "774dcecbd0b9b57be6c150adacb60ced79b11b23" },
