@@ -9,7 +9,7 @@ return {
         local gitsigns = require('gitsigns')
 
         map('n', '<leader>hb', function()
-          gitsigns.blame_line({ full = false })
+          gitsigns.blame_line({ full = true })
         end)
       end,
     })

@@ -18,7 +18,7 @@ opt.tabstop = indent
 
 -- search
 opt.hlsearch = true
-opt.ignorecase = true
+opt.ignorecase = false -- Case insensitive search
 opt.smartcase = true
 opt.wildignore = opt.wildignore + { '*/node_modules/*', '*/.git/*', '*/vendor/*' }
 opt.wildmenu = true

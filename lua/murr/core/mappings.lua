@@ -35,12 +35,10 @@ map('n', '<leader>p', ':set wrap!<CR>') -- Toggle line wrap
 map('n', ':qt', ':tabclose') -- Close tab
 
 -- Trouble
-map('n', '<leader>xx', '<cmd>TroubleToggle document_diagnostics<cr>')
-map('n', '<leader>xa', '<cmd>TroubleToggle<cr>')
-map('n', '<leader>xw', '<cmd>TroubleToggle workspace_diagnostics<cr>')
-map('n', '<leader>xq', '<cmd>TroubleToggle quickfix<cr>')
-map('n', '<leader>xl', '<cmd>TroubleToggle loclist<cr>')
-map('n', 'gR', '<cmd>TroubleToggle lsp_references<cr>')
+map('n', '<leader>xx', '<cmd>Trouble diagnostics toggle<cr>')
+map('n', '<leader>xq', '<cmd>Trouble qfList toggle<cr>')
+map('n', '<leader>xl', '<cmd>Trouble loclist toggle<cr>')
+map('n', 'gR', '<cmd>Trouble lsp toggle focus=false win.position=bottom<cr>')
 
 --  Colorizer
 -- [[ Colorizer is lazy loaded so we need to require it to use it ]]

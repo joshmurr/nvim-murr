@@ -20,6 +20,7 @@ return {
         'tsx',
         'javascript',
         'prisma',
+        'python',
         'json',
         'jsonc',
         'html',

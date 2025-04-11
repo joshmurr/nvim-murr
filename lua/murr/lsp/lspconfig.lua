@@ -58,7 +58,7 @@ return {
         '<cmd>lua require("murr.utils.logger"):log(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>'
       )
 
-      if client.name == 'tsserver' then
+      if client.name == 'ts_ls' then
         -- typescript helpers
         set_keymap('n', '<leader>gr', ':TSLspRenameFile<CR>')
         set_keymap('n', '<leader>go', ':TSLspOrganize<CR>')
@@ -72,10 +72,25 @@ return {
     -- configure html server
     lspconfig['html'].setup({ capabilities = capabilities, on_attach = on_attach })
 
+    local function organize_imports()
+      local params = {
+        command = '_typescript.organizeImports',
+        arguments = { vim.api.nvim_buf_get_name(0) },
+        title = '',
+      }
+      vim.lsp.buf.execute_command(params)
+    end
+
     -- configure typescript server with plugin
-    lspconfig['tsserver'].setup({
+    lspconfig['ts_ls'].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      commands = {
+        OrganizeImports = {
+          organize_imports,
+          description = 'Organize Imports',
+        },
+      },
     })
 
     lspconfig['eslint'].setup({
@@ -122,6 +137,22 @@ return {
 
     -- configure python server
     lspconfig['pyright'].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = {
+        python = {
+          venvPath = '.',
+          pythonPath = vim.fn.exepath('python'),
+          analysis = {
+            autoSearchPaths = true,
+            useLibraryCodeForTypes = true,
+            diagnosticMode = 'workspace',
+          },
+        },
+      },
+    })
+
+    lspconfig['ruff'].setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
